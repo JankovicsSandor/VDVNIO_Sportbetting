@@ -21,6 +21,9 @@ public class Player {
     private LocalDate birth;
     private Currency currency;
 
+    public Player() {
+    }
+
     public Player(PlayerBuilder builder) {
         this.name = builder.getName();
         this.accountNumber = builder.getAccountNumber();
