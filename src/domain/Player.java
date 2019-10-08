@@ -17,6 +17,15 @@ public class Player {
     private Integer accountNumber;
     private BigDecimal balance;
     private LocalDate birth;
+    private Currency currency;
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
     
     private User user;
 

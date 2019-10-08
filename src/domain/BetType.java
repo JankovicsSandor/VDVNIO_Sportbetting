@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sportbetting;
+package domain;
 
 /**
  *
  * @author Sanyi
  */
-public interface ISportsBettingService {
-    
+public enum BetType {
+    WINNER,GOALS,PLAYERS_SCORE,NUMBER_OF_SETS
 }

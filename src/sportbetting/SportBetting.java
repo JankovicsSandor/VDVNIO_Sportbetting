@@ -5,6 +5,9 @@
  */
 package sportbetting;
 
+import service.SportBettingSerivce;
+import view.View;
+
 /**
  *
  * @author Sanyi
@@ -15,7 +18,8 @@ public class SportBetting {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       App app= new App(new SportBettingSerivce(),new View());
+       app.play();
     }
     
 }

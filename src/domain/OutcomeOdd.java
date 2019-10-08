@@ -16,6 +16,15 @@ public class OutcomeOdd {
     private BigDecimal value;
     private LocalDateTime validFrom;
     private LocalDateTime validUntil;
+    private Outcome outcome;
+
+    public Outcome getOutcome() {
+        return outcome;
+    }
+
+    public void setOutcome(Outcome outcome) {
+        this.outcome = outcome;
+    }
 
     public BigDecimal getValue() {
         return value;

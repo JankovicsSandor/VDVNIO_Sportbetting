@@ -9,7 +9,7 @@ package domain;
  *
  * @author Sanyi
  */
-public class User {
+public class User extends Player {
     private String email;
     private String password;
 

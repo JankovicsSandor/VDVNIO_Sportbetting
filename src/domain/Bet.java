@@ -12,30 +12,43 @@ import java.util.List;
  * @author Sanyi
  */
 public class Bet {
+
     private String description;
     private SportEvent event;
-    private List<Outcome> outcome;
-
+    private List<Outcome> outcomes;
+    private BetType type;
+    
+    public BetType getBettype() {
+        return type;
+    }
+    
+    public void setBettype(BetType bettype) {
+        this.type = bettype;
+    }
+    
     public List<Outcome> getOutcome() {
-        return outcome;
+        return outcomes;
     }
-
+    
     public void setOutcome(List<Outcome> outcome) {
-        this.outcome = outcome;
+        for (Outcome element : outcome) {
+            element.setBet(this);
+        }
+        this.outcomes = outcome;
     }
-
+    
     public String getDescription() {
         return description;
     }
-
+    
     public void setDescription(String description) {
         this.description = description;
     }
-
+    
     public SportEvent getEvent() {
         return event;
     }
-
+    
     public void setEvent(SportEvent event) {
         this.event = event;
     }
