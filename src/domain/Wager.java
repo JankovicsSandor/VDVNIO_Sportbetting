@@ -14,6 +14,36 @@ import java.time.LocalDateTime;
  */
 public class Wager {
     private BigDecimal amount;
+    private LocalDateTime timeStampCreated;
+    private boolean processed;
+    private boolean win;
+    private OutcomeOdd odd;
+    private Player player;
+    private Currency currency;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    public OutcomeOdd getOdd() {
+        return odd;
+    }
+
+    public void setOdd(OutcomeOdd odd) {
+        this.odd = odd;
+    }
 
     public BigDecimal getAmount() {
         return amount;
@@ -46,7 +76,5 @@ public class Wager {
     public void setWin(boolean win) {
         this.win = win;
     }
-    private LocalDateTime timeStampCreated;
-    private boolean processed;
-    private boolean win;
+    
 }
