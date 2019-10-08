@@ -5,6 +5,7 @@
  */
 package domain;
 
+import database.WagerBuilder;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -20,6 +21,18 @@ public class Wager {
     private OutcomeOdd odd;
     private Player player;
     private Currency currency;
+
+    public Wager(WagerBuilder builder) {
+        this.amount=builder.getAmount();
+        this.timeStampCreated=builder.getTimeStampCreated();
+        this.processed=builder.isProcessed();
+        this.win=builder.isWin();
+        this.odd=builder.getOdd();
+        this.player=builder.getPlayer();
+        this.currency=builder.getCurrency();
+    }
+    
+    
 
     public Player getPlayer() {
         return player;

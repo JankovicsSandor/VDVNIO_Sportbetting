@@ -5,6 +5,7 @@
  */
 package domain;
 
+import database.PlayerBuilder;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -13,11 +14,20 @@ import java.time.LocalDate;
  * @author Sanyi
  */
 public class Player {
+
     private String name;
     private Integer accountNumber;
     private BigDecimal balance;
     private LocalDate birth;
     private Currency currency;
+
+    public Player(PlayerBuilder builder) {
+        this.name = builder.getName();
+        this.accountNumber = builder.getAccountNumber();
+        this.balance = builder.getBalance();
+        this.birth = builder.getBirth();
+        this.currency = builder.getCurrency();
+    }
 
     public Currency getCurrency() {
         return currency;
@@ -26,7 +36,7 @@ public class Player {
     public void setCurrency(Currency currency) {
         this.currency = currency;
     }
-    
+
     private User user;
 
     public String getName() {

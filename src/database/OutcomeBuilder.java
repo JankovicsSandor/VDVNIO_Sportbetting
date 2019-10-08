@@ -14,9 +14,9 @@ import java.util.List;
  *
  * @author Sanyi
  */
-public class OutComeBuilder {
+public class OutcomeBuilder {
 
-    public OutComeBuilder() {
+    public OutcomeBuilder() {
         this.outcomeOdds = new ArrayList<OutcomeOdd>();
     }
 
@@ -36,17 +36,17 @@ public class OutComeBuilder {
     private Bet bet;
     private List<OutcomeOdd> outcomeOdds;
 
-    public OutComeBuilder description(String description) {
+    public OutcomeBuilder description(String description) {
         this.description = description;
         return this;
     }
 
-    public OutComeBuilder description(Bet bet) {
+    public OutcomeBuilder description(Bet bet) {
         this.bet = bet;
         return this;
     }
 
-    public OutComeBuilder description(List<OutcomeOdd> outcomeOdds) {
+    public OutcomeBuilder description(List<OutcomeOdd> outcomeOdds) {
         this.outcomeOdds = outcomeOdds;
         return this;
     }

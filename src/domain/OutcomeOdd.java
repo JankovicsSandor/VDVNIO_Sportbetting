@@ -5,6 +5,7 @@
  */
 package domain;
 
+import database.OutcomeOddBuilder;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
  * @author Sanyi
  */
 public class OutcomeOdd {
+
     private BigDecimal value;
     private LocalDateTime validFrom;
     private LocalDateTime validUntil;
@@ -20,6 +22,13 @@ public class OutcomeOdd {
 
     public Outcome getOutcome() {
         return outcome;
+    }
+
+    public OutcomeOdd(OutcomeOddBuilder builder) {
+        this.value = builder.getValue();
+        this.validFrom = builder.getValidFrom();
+        this.validUntil = builder.getValidUntil();
+        this.outcome = builder.getOutcome();
     }
 
     public void setOutcome(Outcome outcome) {

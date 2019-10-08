@@ -5,7 +5,7 @@
  */
 package domain;
 
-import database.OutComeBuilder;
+import database.OutcomeBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class Outcome {
         this.outcomeOdds = new ArrayList<OutcomeOdd>();
     }
 
-    public Outcome(OutComeBuilder builder) {
+    public Outcome(OutcomeBuilder builder) {
         this.description = builder.getDescription();
         this.bet = builder.getBet();
         this.outcomeOdds = builder.getOutcomeOdds();

@@ -5,13 +5,22 @@
  */
 package domain;
 
+import database.PlayerBuilder;
+
 /**
  *
  * @author Sanyi
  */
 public class User extends Player {
+
     private String email;
     private String password;
+
+    public User(PlayerBuilder builder) {
+        super(builder);
+        this.email = builder.getEmail();
+        this.password = builder.getPassword();
+    }
 
     public String getEmail() {
         return email;
@@ -28,5 +37,5 @@ public class User extends Player {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
 }
