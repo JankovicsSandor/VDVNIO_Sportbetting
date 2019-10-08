@@ -5,6 +5,7 @@
  */
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +13,10 @@ import java.util.List;
  * @author Sanyi
  */
 public class Outcome {
+
+    public Outcome() {
+        this.outcomeOdds=new ArrayList<OutcomeOdd>();
+    }
 
     private String description;
     private Bet bet;

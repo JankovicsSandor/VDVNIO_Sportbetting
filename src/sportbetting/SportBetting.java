@@ -5,6 +5,10 @@
  */
 package sportbetting;
 
+import database.Database;
+import exception.TerminateAppExcpetion;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import service.SportBettingSerivce;
 import view.View;
 
@@ -18,8 +22,12 @@ public class SportBetting {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       App app= new App(new SportBettingSerivce(),new View());
-       app.play();
+       App app= new App(new SportBettingSerivce(new Database()),new View());
+        try {
+            app.play();
+        } catch (TerminateAppExcpetion ex) {
+            System.exit(0);
+        }
     }
     
 }

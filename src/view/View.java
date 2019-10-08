@@ -12,6 +12,7 @@ import domain.OutcomeOdd;
 import domain.Player;
 import domain.SportEvent;
 import domain.Wager;
+import exception.TerminateAppExcpetion;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Scanner;
@@ -48,11 +49,12 @@ public class View implements IView {
 
     @Override
     public void printBalance(Player player) {
-        System.out.println(player.getBalance());
+        System.out.println("Your balance is  " + player.getBalance() + " " + player.getCurrency());
     }
 
     @Override
     public void printOutcomeOdds(List<SportEvent> sportEventList) {
+        System.out.println("What are you want to be on? (choose a number or press q for quit)");
         int index = 0;
         for (SportEvent sportEvent : sportEventList) {
             for (Bet bet : sportEvent.getBets()) {
@@ -69,13 +71,35 @@ public class View implements IView {
     }
 
     @Override
-    public OutcomeOdd selectOutcomeOdd(List<SportEvent> sportEventList) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public OutcomeOdd selectOutcomeOdd(List<SportEvent> sportEventList) throws TerminateAppExcpetion {
+        Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
+        if ("q".equals(line)) {
+            throw new TerminateAppExcpetion();
+        }
+        int index = 0;
+        int choosen = Integer.parseInt(line);
+        for (SportEvent sportEvent : sportEventList) {
+            for (Bet bet : sportEvent.getBets()) {
+                for (Outcome outcome : bet.getWinnerOutcome()) {
+                    for (OutcomeOdd outcomeOdd : outcome.getOutcomeOdds()) {
+                        index++;
+                        if (index == choosen) {
+                            return outcomeOdd;
+                        }
+                    }
+                }
+            }
+        }
+        
+        return null;
     }
 
     @Override
     public BigDecimal readWagerAmount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("What amount do you wish to bet on it?");
+        Scanner scanner = new Scanner(System.in);
+        return new BigDecimal(scanner.nextLine());
     }
 
     @Override
@@ -85,7 +109,10 @@ public class View implements IView {
 
     @Override
     public void printResults(Player player, List<Wager> wagerList) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Wager wager : wagerList) {
+            System.out.println("Wager ' " + wager.getOdd().getOutcome() + "' of " + wager.getOdd().getOutcome().getBet().getEvent().getTitle()
+                    + "[odd: " + wager.getOdd().getValue() + ", amount: " + wager.getOdd().getValue() + "] win:" + wager.isWin());
+        }
     }
 
 }

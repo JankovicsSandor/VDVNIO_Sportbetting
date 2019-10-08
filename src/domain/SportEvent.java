@@ -6,6 +6,7 @@
 package domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,10 +14,15 @@ import java.util.List;
  * @author Sanyi
  */
 public class SportEvent {
+
+    public SportEvent() {
+        this.bets = new ArrayList<Bet>();
+    }
+
     private String title;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    
+
     private List<Bet> bets;
     private Result result;
 
@@ -44,11 +50,11 @@ public class SportEvent {
         this.endDate = endDate;
     }
 
-    public List<Bet> getBet() {
+    public List<Bet> getBets() {
         return bets;
     }
 
-    public void setBet(List<Bet> bet) {
+    public void setBets(List<Bet> bet) {
         this.bets = bet;
     }
 

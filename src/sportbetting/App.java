@@ -5,6 +5,8 @@
  */
 package sportbetting;
 
+import database.Database;
+import exception.TerminateAppExcpetion;
 import service.ISportsBettingService;
 import view.IView;
 
@@ -16,13 +18,15 @@ public class App {
 
     private ISportsBettingService sportsBettingService;
     private IView view;
+    private Database database;
 
     public App(ISportsBettingService service, IView view) {
         sportsBettingService = service;
         view = view;
+        database = new Database();
     }
 
-    public void play() {
+    public void play() throws TerminateAppExcpetion {
     }
 
     public void doBetting() {

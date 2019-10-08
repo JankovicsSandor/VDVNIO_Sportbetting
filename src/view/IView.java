@@ -9,6 +9,7 @@ import domain.OutcomeOdd;
 import domain.Player;
 import domain.SportEvent;
 import domain.Wager;
+import exception.TerminateAppExcpetion;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public interface IView {
    void printWelcomeMessage(Player player);
    void printBalance(Player player);
    void printOutcomeOdds(List<SportEvent> sportEventList);
-   OutcomeOdd selectOutcomeOdd(List<SportEvent> sportEventList);
+   OutcomeOdd selectOutcomeOdd(List<SportEvent> sportEventList)throws TerminateAppExcpetion;
    BigDecimal readWagerAmount();
    void printNotEnoughBalance(Player player);
    void printResults(Player player,List<Wager> wagerList);

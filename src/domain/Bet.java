@@ -5,6 +5,7 @@
  */
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,9 +14,13 @@ import java.util.List;
  */
 public class Bet {
 
+    public Bet() {
+        this.winnerOutcomes=new ArrayList<Outcome>();
+    }
+
     private String description;
     private SportEvent event;
-    private List<Outcome> outcomes;
+    private List<Outcome> winnerOutcomes;
     private BetType type;
     
     public BetType getBettype() {
@@ -26,15 +31,15 @@ public class Bet {
         this.type = bettype;
     }
     
-    public List<Outcome> getOutcome() {
-        return outcomes;
+    public List<Outcome> getWinnerOutcome() {
+        return winnerOutcomes;
     }
     
-    public void setOutcome(List<Outcome> outcome) {
+    public void setWinnerOutcome(List<Outcome> outcome) {
         for (Outcome element : outcome) {
             element.setBet(this);
         }
-        this.outcomes = outcome;
+        this.winnerOutcomes = outcome;
     }
     
     public String getDescription() {

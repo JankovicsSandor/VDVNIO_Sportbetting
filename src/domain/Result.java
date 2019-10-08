@@ -5,6 +5,7 @@
  */
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,13 +13,18 @@ import java.util.List;
  * @author Sanyi
  */
 public class Result {
-    private List<Outcome> innerOutcomes;
 
-    public List<Outcome> getinnerOutcomes() {
-        return innerOutcomes;
+    public Result() {
+        this.winnerOutcomes = new ArrayList<Outcome>();
     }
 
-    public void setinnerOutcomes(List<Outcome> outcome) {
-        this.innerOutcomes = outcome;
+    private List<Outcome> winnerOutcomes;
+
+    public List<Outcome> getWinnerOutcomes() {
+        return winnerOutcomes;
+    }
+
+    public void setWinnerOutcomes(List<Outcome> outcome) {
+        this.winnerOutcomes = outcome;
     }
 }

@@ -5,6 +5,7 @@
  */
 package service;
 
+import database.Database;
 import domain.Player;
 import domain.SportEvent;
 import domain.Wager;
@@ -16,6 +17,13 @@ import java.util.List;
  */
 public class SportBettingSerivce implements ISportsBettingService {
 
+    private final Database database;
+
+    public SportBettingSerivce(Database database) {
+        this.database=database;
+    }
+
+    
     @Override
     public void savePlayer(Player player) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
