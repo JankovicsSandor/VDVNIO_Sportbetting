@@ -5,24 +5,32 @@
  */
 package sportbetting;
 
+import service.ISportsBettingService;
+import view.IView;
+
 /**
  *
  * @author Sanyi
  */
 public class App {
 
-    public App(ISportsBettingService service,IView view) {
+    private ISportsBettingService sportsBettingService;
+    private IView view;
+
+    public App(ISportsBettingService service, IView view) {
+        sportsBettingService = service;
+        view = view;
     }
-    
-    public void play(){
+
+    public void play() {
     }
-    
-    public void doBetting(){
+
+    public void doBetting() {
     }
-    
-    public void calculateResults(){
+
+    public void calculateResults() {
     }
-    
-    public void printResults(){
+
+    public void printResults() {
     }
 }
