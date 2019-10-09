@@ -24,6 +24,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import service.ISportsBettingService;
@@ -177,22 +178,35 @@ public class App {
         Player actualPlayer = this.sportsBettingService.findPlayer();
         if (actualPlayer.getBalance().compareTo(amount) != -1) {
             actualPlayer.setBalance((actualPlayer.getBalance().subtract(amount)));
+            Random r = new Random();
             Wager wager = new WagerBuilder()
                     .amount(amount)
                     .currency(actualPlayer.getCurrency())
                     .player(actualPlayer)
                     .odd(odd)
+                    .win(r.nextBoolean())
                     .timeStampCreated(LocalDateTime.now())
                     .build();
             this.view.printWageSaved(wager);
+            this.database.setWager(wager);
         } else {
             this.view.printNotEnoughBalance(actualPlayer);
         }
     }
 
     private void calculateResults() {
+        List<Wager> wagerList = this.database.getWager();
+        Player player = this.sportsBettingService.findPlayer();
+        for (Wager wager : wagerList) {
+            if (wager.isWin()) {
+                BigDecimal val = wager.getOdd().getValue().multiply(wager.getAmount());
+                player.setBalance((player.getBalance().add(val)));
+            }
+        }
     }
 
     private void printResults() {
+        Player player = this.sportsBettingService.findPlayer();
+        this.view.printResults(player, this.database.getWager());
     }
 }

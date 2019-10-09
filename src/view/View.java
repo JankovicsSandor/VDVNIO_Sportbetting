@@ -111,9 +111,10 @@ public class View implements IView {
     @Override
     public void printResults(Player player, List<Wager> wagerList) {
         for (Wager wager : wagerList) {
-            System.out.println("Wager ' " + wager.getOdd().getOutcome() + "' of " + wager.getOdd().getOutcome().getBet().getEvent().getTitle()
-                    + "[odd: " + wager.getOdd().getValue() + ", amount: " + wager.getOdd().getValue() + "] win:" + wager.isWin());
+            System.out.println("Wager ' " + wager.getOdd().getOutcome().getDescription() + "' of " + wager.getOdd().getOutcome().getBet().getEvent().getTitle()
+                    + "[odd: " + wager.getOdd().getValue() + ", amount: " + wager.getAmount() + "] win:" + wager.isWin());
         }
+        System.out.println("Your new balance is " + player.getBalance() + " " + player.getCurrency());
     }
 
     @Override

@@ -16,7 +16,7 @@ public class TerminateAppExcpetion extends Exception {
     }
 
     public TerminateAppExcpetion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         super("");
     }
     
 }
