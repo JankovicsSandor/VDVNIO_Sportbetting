@@ -15,6 +15,13 @@ import java.time.LocalDateTime;
  */
 public class OutcomeOdd {
 
+    public OutcomeOdd(BigDecimal value, LocalDateTime validFrom, LocalDateTime validUntil, Outcome outcome) {
+        this.value = value;
+        this.validFrom = validFrom;
+        this.validUntil = validUntil;
+        this.outcome = outcome;
+    }
+
     private BigDecimal value;
     private LocalDateTime validFrom;
     private LocalDateTime validUntil;
@@ -22,13 +29,6 @@ public class OutcomeOdd {
 
     public Outcome getOutcome() {
         return outcome;
-    }
-
-    public OutcomeOdd(OutcomeOddBuilder builder) {
-        this.value = builder.getValue();
-        this.validFrom = builder.getValidFrom();
-        this.validUntil = builder.getValidUntil();
-        this.outcome = builder.getOutcome();
     }
 
     public void setOutcome(Outcome outcome) {

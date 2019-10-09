@@ -6,6 +6,8 @@
 package domain;
 
 import database.PlayerBuilder;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
  *
@@ -16,10 +18,10 @@ public class User extends Player {
     private String email;
     private String password;
 
-    public User(PlayerBuilder builder) {
-        super(builder);
-        this.email = builder.getEmail();
-        this.password = builder.getPassword();
+    public User(String email, String password, String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency, User user) {
+        super(name, accountNumber, balance, birth, currency, user);
+        this.email = email;
+        this.password = password;
     }
 
     public String getEmail() {

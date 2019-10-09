@@ -15,14 +15,10 @@ import java.util.List;
  */
 public class Outcome {
 
-    public Outcome() {
-        this.outcomeOdds = new ArrayList<OutcomeOdd>();
-    }
-
-    public Outcome(OutcomeBuilder builder) {
-        this.description = builder.getDescription();
-        this.bet = builder.getBet();
-        this.outcomeOdds = builder.getOutcomeOdds();
+    public Outcome(String description, Bet bet, List<OutcomeOdd> outcomeOdds) {
+        this.description = description;
+        this.bet = bet;
+        this.outcomeOdds = outcomeOdds;
     }
 
     private String description;

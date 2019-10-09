@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
  * @author Sanyi
  */
 public class Wager {
+
     private BigDecimal amount;
     private LocalDateTime timeStampCreated;
     private boolean processed;
@@ -22,17 +23,15 @@ public class Wager {
     private Player player;
     private Currency currency;
 
-    public Wager(WagerBuilder builder) {
-        this.amount=builder.getAmount();
-        this.timeStampCreated=builder.getTimeStampCreated();
-        this.processed=builder.isProcessed();
-        this.win=builder.isWin();
-        this.odd=builder.getOdd();
-        this.player=builder.getPlayer();
-        this.currency=builder.getCurrency();
+    public Wager(BigDecimal amount, LocalDateTime timeStampCreated, boolean processed, boolean win, OutcomeOdd odd, Player player, Currency currency) {
+        this.amount = amount;
+        this.timeStampCreated = timeStampCreated;
+        this.processed = processed;
+        this.win = win;
+        this.odd = odd;
+        this.player = player;
+        this.currency = currency;
     }
-    
-    
 
     public Player getPlayer() {
         return player;
@@ -89,5 +88,5 @@ public class Wager {
     public void setWin(boolean win) {
         this.win = win;
     }
-    
+
 }

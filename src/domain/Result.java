@@ -14,9 +14,10 @@ import java.util.List;
  */
 public class Result {
 
-    public Result() {
-        this.winnerOutcomes = new ArrayList<Outcome>();
+    public Result(List<Outcome> winnerOutcomes) {
+        this.winnerOutcomes = winnerOutcomes;
     }
+
 
     private List<Outcome> winnerOutcomes;
 

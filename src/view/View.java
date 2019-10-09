@@ -31,7 +31,7 @@ public class View implements IView {
         System.out.println("What is you name ?");
         player.setName(scanner.nextLine());
 
-        System.out.println("How much monez do you have(more than 0) ?");
+        System.out.println("How much money do you have(more than 0) ?");
         player.setBalance(new BigDecimal(scanner.nextLine()));
 
         System.out.println("What is you currency ?");

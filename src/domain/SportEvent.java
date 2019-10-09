@@ -19,6 +19,14 @@ public class SportEvent {
         this.bets = new ArrayList<Bet>();
     }
 
+    public SportEvent(String title, LocalDateTime startDate, LocalDateTime endDate, List<Bet> bets, Result result) {
+        this.title = title;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.bets = bets;
+        this.result = result;
+    }
+
     private String title;
     private LocalDateTime startDate;
     private LocalDateTime endDate;

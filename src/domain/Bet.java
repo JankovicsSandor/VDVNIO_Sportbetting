@@ -15,19 +15,13 @@ import java.util.List;
  */
 public class Bet {
 
-    public Bet() {
-        this.winnerOutcomes = new ArrayList<Outcome>();
+    public Bet(String description, SportEvent event, List<Outcome> winnerOutcomes, BetType type) {
+        this.description = description;
+        this.event = event;
+        this.winnerOutcomes = winnerOutcomes;
+        this.type = type;
     }
-
-    public Bet(BetBuilder builder) {
-        this.description = builder.getDescription();
-        this.event = builder.getEvent();
-        this.winnerOutcomes = builder.getWinnerOutcomes();
-        this.type = builder.getType();
-    }
-    
-    
-
+   
     private String description;
     private SportEvent event;
     private List<Outcome> winnerOutcomes;

@@ -5,6 +5,7 @@
  */
 package database;
 
+import domain.Bet;
 import domain.BetType;
 import domain.Outcome;
 import domain.SportEvent;
@@ -17,22 +18,6 @@ import java.util.List;
 public class BetBuilder {
 
     private String description;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public SportEvent getEvent() {
-        return event;
-    }
-
-    public List<Outcome> getWinnerOutcomes() {
-        return winnerOutcomes;
-    }
-
-    public BetType getType() {
-        return type;
-    }
     private SportEvent event;
     private List<Outcome> winnerOutcomes;
     private BetType type;
@@ -55,5 +40,9 @@ public class BetBuilder {
     public BetBuilder event(BetType type) {
         this.type = type;
         return this;
+    }
+
+    public Bet build() {
+        return new Bet(description, event, winnerOutcomes, type);
     }
 }

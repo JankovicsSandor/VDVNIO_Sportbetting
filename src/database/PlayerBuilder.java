@@ -20,31 +20,6 @@ public class PlayerBuilder {
     private BigDecimal balance;
     private LocalDate birth;
     private Currency currency;
-    private String email;
-    private String password;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public PlayerBuilder name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public PlayerBuilder email(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public PlayerBuilder password(String password) {
-        this.password = password;
-        return this;
-    }
 
     public PlayerBuilder accountNumber(Integer accountNumber) {
         this.accountNumber = accountNumber;

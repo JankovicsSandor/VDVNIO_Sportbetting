@@ -24,14 +24,16 @@ public class Player {
     public Player() {
     }
 
-    public Player(PlayerBuilder builder) {
-        this.name = builder.getName();
-        this.accountNumber = builder.getAccountNumber();
-        this.balance = builder.getBalance();
-        this.birth = builder.getBirth();
-        this.currency = builder.getCurrency();
-    }
 
+    public Player(String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency, User user) {
+        this.name = name;
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.birth = birth;
+        this.currency = currency;
+        this.user = user;
+    }
+    
     public Currency getCurrency() {
         return currency;
     }

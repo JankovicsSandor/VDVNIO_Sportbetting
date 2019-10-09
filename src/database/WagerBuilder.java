@@ -8,6 +8,7 @@ package database;
 import domain.Currency;
 import domain.OutcomeOdd;
 import domain.Player;
+import domain.Wager;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -60,32 +61,8 @@ public class WagerBuilder {
         return this;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public LocalDateTime getTimeStampCreated() {
-        return timeStampCreated;
-    }
-
-    public boolean isProcessed() {
-        return processed;
-    }
-
-    public boolean isWin() {
-        return win;
-    }
-
-    public OutcomeOdd getOdd() {
-        return odd;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public Currency getCurrency() {
-        return currency;
+    public Wager build() {
+        return new Wager(amount,timeStampCreated,processed,win,odd,player,currency);
     }
 
 }

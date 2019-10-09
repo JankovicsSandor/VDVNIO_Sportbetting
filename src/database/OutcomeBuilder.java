@@ -6,6 +6,7 @@
 package database;
 
 import domain.Bet;
+import domain.Outcome;
 import domain.OutcomeOdd;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,10 @@ public class OutcomeBuilder {
     public OutcomeBuilder description(List<OutcomeOdd> outcomeOdds) {
         this.outcomeOdds = outcomeOdds;
         return this;
+    }
+    
+    public Outcome build() {
+        return new Outcome(description,bet,outcomeOdds);
     }
 
 }
