@@ -22,20 +22,20 @@ import java.util.List;
  */
 public class Database {
 
-    private final List<Bet> bet;
-    private final List<Outcome> outcome;
-    private final List<OutcomeOdd> outcomeOdd;
-    private final List<Player> player;
-    private final List<Result> result;
-    private final List<SportEvent> sportEvent;
-    private final List<User> user;
-    private final List<Wager> wager;
+    private List<Bet> bet;
+    private List<Outcome> outcome;
+    private List<OutcomeOdd> outcomeOdd;
+    private Player player;
+    private List<Result> result;
+    private List<SportEvent> sportEvent;
+    private List<User> user;
+    private List<Wager> wager;
 
     public Database() {
         bet = new ArrayList<Bet>();
         outcome = new ArrayList<Outcome>();
         outcomeOdd = new ArrayList<OutcomeOdd>();
-        player = new ArrayList<Player>();
+        player = new Player();
         result = new ArrayList<>();
         sportEvent = new ArrayList<SportEvent>();
         user = new ArrayList<User>();
@@ -67,12 +67,12 @@ public class Database {
         this.outcomeOdd.add(outcomeOdd);
     }
 
-    public List<Player> getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 
     public void setPlayer(Player player) {
-        this.player.add(player);
+        this.player = player;
     }
 
     public List<Result> getResult() {

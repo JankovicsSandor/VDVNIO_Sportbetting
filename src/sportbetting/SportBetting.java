@@ -22,12 +22,9 @@ public class SportBetting {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       App app= new App(new SportBettingSerivce(new Database()),new View());
-        try {
-            app.play();
-        } catch (TerminateAppExcpetion ex) {
-            System.exit(0);
-        }
+        App app = new App(new SportBettingSerivce(new Database()), new View());
+        app.play();
+
     }
-    
+
 }

@@ -61,9 +61,10 @@ public class View implements IView {
                 for (Outcome outcome : bet.getWinnerOutcome()) {
                     for (OutcomeOdd outcomeOdd : outcome.getOutcomeOdds()) {
                         index++;
-                        System.out.println(index + "Sport event: " + sportEvent.getTitle()
-                                + "(start: " + sportEvent.getStartDate() + "), Bet " + bet.getDescription() + ", Outcome: " + outcome.getBet().getDescription()
-                                + ", Actual odd: " + outcomeOdd.getValue() + ", Valid between" + outcomeOdd.getValidFrom() + "and" + outcomeOdd.getValidUntil() + ".");
+                        System.out.println(index + ": Sport event: " + sportEvent.getTitle()
+                                + "(start: " + sportEvent.getStartDate() + "), Bet " + bet.getDescription() + ", Outcome: " + outcome.getDescription()
+                                + ", Actual odd: " + outcomeOdd.getValue() + ", Valid between " + outcomeOdd.getValidFrom()
+                                + " and " + outcomeOdd.getValidUntil() + ".");
                     }
                 }
             }
@@ -91,7 +92,7 @@ public class View implements IView {
                 }
             }
         }
-        
+
         return null;
     }
 
@@ -113,6 +114,13 @@ public class View implements IView {
             System.out.println("Wager ' " + wager.getOdd().getOutcome() + "' of " + wager.getOdd().getOutcome().getBet().getEvent().getTitle()
                     + "[odd: " + wager.getOdd().getValue() + ", amount: " + wager.getOdd().getValue() + "] win:" + wager.isWin());
         }
+    }
+
+    @Override
+    public void printWageSaved(Wager wager) {
+        System.out.println("Wager '" + wager.getOdd().getOutcome().getBet().getDescription() + "="
+                + wager.getOdd().getOutcome().getDescription() + " of " + wager.getOdd().getOutcome().getBet().getEvent().getTitle()
+                + " [odd: " + wager.getOdd().getValue() + ", amount: " + wager.getAmount() + "] saved");
     }
 
 }

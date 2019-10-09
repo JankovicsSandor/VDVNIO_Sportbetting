@@ -3,19 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/domain/Currency.java</file>
-            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/domain/FootballSportEvent.java</file>
-            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/domain/Player.java</file>
-            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/domain/User.java</file>
-            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/domain/BetType.java</file>
-            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/domain/OutcomeOdd.java</file>
+            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/domain/Outcome.java</file>
+            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/database/BetBuilder.java</file>
             <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/database/OutcomeOddBuilder.java</file>
             <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/database/WagerBuilder.java</file>
-            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/domain/Wager.java</file>
+            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/sportbetting/App.java</file>
+            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/sportbetting/SportBetting.java</file>
             <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/database/Database.java</file>
             <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/database/PlayerBuilder.java</file>
+            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/database/UserBuilder.java</file>
             <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/database/OutcomeBuilder.java</file>
-            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/view/View.java</file>
+            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/database/SporteventBuilder.java</file>
+            <file>file:/C:/Users/Sanyi/Desktop/SportBetting/src/domain/Bet.java</file>
         </group>
     </open-files>
 </project-private>

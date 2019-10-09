@@ -11,6 +11,7 @@ import domain.Result;
 import domain.SportEvent;
 import domain.TennisSportEvent;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +26,10 @@ public class SporteventBuilder {
 
     private List<Bet> bets;
     private Result result;
+
+    public SporteventBuilder() {
+        this.bets=new ArrayList<Bet>();
+    }
 
     public SporteventBuilder title(String title) {
         this.title = title;

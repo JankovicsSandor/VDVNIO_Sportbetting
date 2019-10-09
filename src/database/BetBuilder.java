@@ -9,6 +9,7 @@ import domain.Bet;
 import domain.BetType;
 import domain.Outcome;
 import domain.SportEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,10 @@ public class BetBuilder {
     private SportEvent event;
     private List<Outcome> winnerOutcomes;
     private BetType type;
+
+    public BetBuilder() {
+        this.winnerOutcomes=new ArrayList<Outcome>();
+    }
 
     public BetBuilder description(String description) {
         this.description = description;

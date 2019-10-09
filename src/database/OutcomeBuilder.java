@@ -21,6 +21,10 @@ public class OutcomeBuilder {
     private Bet bet;
     private List<OutcomeOdd> outcomeOdds;
 
+    public OutcomeBuilder() {
+        this.outcomeOdds=new ArrayList<OutcomeOdd>();
+    }
+
     public OutcomeBuilder description(String description) {
         this.description = description;
         return this;

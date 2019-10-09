@@ -24,6 +24,7 @@ public interface IView {
    void printOutcomeOdds(List<SportEvent> sportEventList);
    OutcomeOdd selectOutcomeOdd(List<SportEvent> sportEventList)throws TerminateAppExcpetion;
    BigDecimal readWagerAmount();
+   void printWageSaved(Wager wager);
    void printNotEnoughBalance(Player player);
    void printResults(Player player,List<Wager> wagerList);
 }

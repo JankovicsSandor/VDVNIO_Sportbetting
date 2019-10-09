@@ -26,27 +26,27 @@ public class SportBettingSerivce implements ISportsBettingService {
     
     @Override
     public void savePlayer(Player player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.database.setPlayer(player);
     }
 
     @Override
     public Player findPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return this.database.getPlayer();
     }
 
     @Override
     public List<SportEvent> findAllSportEvents() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.database.getSportEvent();
     }
 
     @Override
     public void saveWage(Wager wager) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.database.setWager(wager);
     }
 
     @Override
     public List<Wager> findAllWagers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return this.database.getWager();
     }
 
     @Override
