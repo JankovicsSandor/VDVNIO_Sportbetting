@@ -16,9 +16,9 @@ import java.util.List;
 public class Outcome {
 
     public Outcome(String description, Bet bet, List<OutcomeOdd> outcomeOdds) {
-        this.description = description;
-        this.bet = bet;
-        this.outcomeOdds = outcomeOdds;
+        this.setDescription(description);
+        this.setBet(bet);
+        this.setOutcomeOdds(outcomeOdds);
     }
 
     private String description;

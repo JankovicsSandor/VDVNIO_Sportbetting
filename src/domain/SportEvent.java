@@ -13,18 +13,18 @@ import java.util.List;
  *
  * @author Sanyi
  */
-public class SportEvent {
+public abstract class SportEvent {
 
     public SportEvent() {
         this.bets = new ArrayList<Bet>();
     }
 
     public SportEvent(String title, LocalDateTime startDate, LocalDateTime endDate, List<Bet> bets, Result result) {
-        this.title = title;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.bets = bets;
-        this.result = result;
+        this.setTitle(title);
+        this.setStartDate(startDate);
+        this.setEndDate(endDate);
+        this.setBets(bets);
+        this.setResult(result);
     }
 
     private String title;

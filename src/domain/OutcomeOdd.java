@@ -16,10 +16,10 @@ import java.time.LocalDateTime;
 public class OutcomeOdd {
 
     public OutcomeOdd(BigDecimal value, LocalDateTime validFrom, LocalDateTime validUntil, Outcome outcome) {
-        this.value = value;
-        this.validFrom = validFrom;
-        this.validUntil = validUntil;
-        this.outcome = outcome;
+        this.setValue(value);
+        this.setValidFrom(validFrom);
+        this.setValidUntil(validUntil);
+        this.setOutcome(outcome);
     }
 
     private BigDecimal value;

@@ -16,12 +16,12 @@ import java.util.List;
 public class Bet {
 
     public Bet(String description, SportEvent event, List<Outcome> winnerOutcomes, BetType type) {
-        this.description = description;
-        this.event = event;
-        this.winnerOutcomes = winnerOutcomes;
-        this.type = type;
+        this.setDescription(description);
+        this.setEvent(event);
+        this.setWinnerOutcome(winnerOutcomes);
+        this.setBettype(type);
     }
-   
+
     private String description;
     private SportEvent event;
     private List<Outcome> winnerOutcomes;

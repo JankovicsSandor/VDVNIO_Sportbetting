@@ -32,12 +32,12 @@ public class BetBuilder {
         return this;
     }
 
-    public BetBuilder event(List<Outcome> outcome) {
+    public BetBuilder winnerOutcomes(List<Outcome> outcome) {
         this.winnerOutcomes = outcome;
         return this;
     }
 
-    public BetBuilder event(BetType type) {
+    public BetBuilder type(BetType type) {
         this.type = type;
         return this;
     }

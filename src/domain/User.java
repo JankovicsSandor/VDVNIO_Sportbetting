@@ -20,8 +20,8 @@ public class User extends Player {
 
     public User(String email, String password, String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency, User user) {
         super(name, accountNumber, balance, birth, currency, user);
-        this.email = email;
-        this.password = password;
+       this.setEmail(email);
+       this.setPassword(password);
     }
 
     public String getEmail() {

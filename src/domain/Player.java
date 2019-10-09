@@ -26,12 +26,12 @@ public class Player {
 
 
     public Player(String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency, User user) {
-        this.name = name;
-        this.accountNumber = accountNumber;
-        this.balance = balance;
-        this.birth = birth;
-        this.currency = currency;
-        this.user = user;
+        this.setName(name);
+        this.setAccountNumber(accountNumber);
+        this.setBalance(balance);
+        this.setBirth(birth);
+        this.setCurrency(currency);
+        this.setUser(user);
     }
     
     public Currency getCurrency() {

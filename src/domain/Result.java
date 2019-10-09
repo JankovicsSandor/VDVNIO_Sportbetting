@@ -15,7 +15,7 @@ import java.util.List;
 public class Result {
 
     public Result(List<Outcome> winnerOutcomes) {
-        this.winnerOutcomes = winnerOutcomes;
+       this.setWinnerOutcomes(winnerOutcomes);
     }
 
 

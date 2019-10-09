@@ -24,13 +24,13 @@ public class Wager {
     private Currency currency;
 
     public Wager(BigDecimal amount, LocalDateTime timeStampCreated, boolean processed, boolean win, OutcomeOdd odd, Player player, Currency currency) {
-        this.amount = amount;
-        this.timeStampCreated = timeStampCreated;
-        this.processed = processed;
-        this.win = win;
-        this.odd = odd;
-        this.player = player;
-        this.currency = currency;
+       this.setAmount(amount);
+       this.setTimeStampCreated(timeStampCreated);
+       this.setProcessed(processed);
+       this.setWin(win);
+       this.setOdd(odd);
+       this.setPlayer(player);
+       this.setCurrency(currency);
     }
 
     public Player getPlayer() {

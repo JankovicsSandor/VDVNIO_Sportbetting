@@ -17,23 +17,7 @@ import java.util.List;
  */
 public class OutcomeBuilder {
 
-    public OutcomeBuilder() {
-        this.outcomeOdds = new ArrayList<OutcomeOdd>();
-    }
-
     private String description;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Bet getBet() {
-        return bet;
-    }
-
-    public List<OutcomeOdd> getOutcomeOdds() {
-        return outcomeOdds;
-    }
     private Bet bet;
     private List<OutcomeOdd> outcomeOdds;
 
@@ -42,12 +26,12 @@ public class OutcomeBuilder {
         return this;
     }
 
-    public OutcomeBuilder description(Bet bet) {
+    public OutcomeBuilder bet(Bet bet) {
         this.bet = bet;
         return this;
     }
 
-    public OutcomeBuilder description(List<OutcomeOdd> outcomeOdds) {
+    public OutcomeBuilder outcomeOdds(List<OutcomeOdd> outcomeOdds) {
         this.outcomeOdds = outcomeOdds;
         return this;
     }
