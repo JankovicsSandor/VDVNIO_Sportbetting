@@ -34,7 +34,7 @@ public class View implements IView {
         System.out.println("How much money do you have(more than 0) ?");
         player.setBalance(new BigDecimal(scanner.nextLine()));
 
-        System.out.println("What is you currency ?");
+        System.out.println("What is you currency (HUF, EUR ,USD) ?");
         player.setCurrency(Currency.valueOf(scanner.nextLine()));
 
         return player;
@@ -62,7 +62,7 @@ public class View implements IView {
                     for (OutcomeOdd outcomeOdd : outcome.getOutcomeOdds()) {
                         index++;
                         System.out.println(index + ": Sport event: " + sportEvent.getTitle()
-                                + "(start: " + sportEvent.getStartDate() + "), Bet " + bet.getDescription() + ", Outcome: " + outcome.getDescription()
+                                + "(start: " + sportEvent.getStartDate() + "), Bet: " + bet.getDescription() + ", Outcome: " + outcome.getDescription()
                                 + ", Actual odd: " + outcomeOdd.getValue() + ", Valid between " + outcomeOdd.getValidFrom()
                                 + " and " + outcomeOdd.getValidUntil() + ".");
                     }

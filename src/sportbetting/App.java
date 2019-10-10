@@ -97,7 +97,7 @@ public class App {
         );
 
         List<Outcome> outcome2 = new ArrayList<Outcome>();
-        outcome.add(
+        outcome2.add(
                 new OutcomeBuilder()
                 .description("3")
                 .outcomeOdds(outcomeOdd2)
@@ -105,7 +105,7 @@ public class App {
         );
 
         List<Outcome> outcome3 = new ArrayList<Outcome>();
-        outcome.add(
+        outcome3.add(
                 new OutcomeBuilder()
                 .description("Arsenal")
                 .outcomeOdds(outcomeOdd3)
