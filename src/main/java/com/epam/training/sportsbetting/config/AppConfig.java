@@ -9,6 +9,7 @@ import com.example.sportsbetting.service.SportBettingSerivce;
 import com.example.sportsbetting.view.View;
 import com.example.sportsbetting.app.App;
 import com.example.sportsbetting.database.Database;
+import com.example.sportsbetting.language.LanguageService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -29,6 +30,11 @@ public class AppConfig {
     @Bean
     public SportBettingSerivce getService(){
         return new SportBettingSerivce(this.getDatabase());
+    }
+    
+    @Bean
+    public LanguageService getLanguageService(){
+        return new LanguageService();
     }
     
     @Bean

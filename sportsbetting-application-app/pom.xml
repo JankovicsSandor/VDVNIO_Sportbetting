@@ -11,5 +11,11 @@
             <artifactId>sportsbetting-application-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.2.0.RELEASE</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>
