@@ -5,20 +5,20 @@
  */
 package sportbetting;
 
-import database.BetBuilder;
-import database.Database;
-import database.OutcomeBuilder;
-import database.OutcomeOddBuilder;
-import database.SporteventBuilder;
-import database.WagerBuilder;
-import domain.Bet;
-import domain.BetType;
-import domain.FootballSportEvent;
-import domain.Outcome;
-import domain.OutcomeOdd;
-import domain.Player;
-import domain.Wager;
-import exception.TerminateAppExcpetion;
+import com.sportsbetting.database.BetBuilder;
+import com.sportsbetting.database.Database;
+import com.sportsbetting.database.OutcomeBuilder;
+import com.sportsbetting.database.OutcomeOddBuilder;
+import com.sportsbetting.database.SporteventBuilder;
+import com.sportsbetting.database.WagerBuilder;
+import com.sportsbetting.domain.Bet;
+import com.sportsbetting.domain.BetType;
+import com.sportsbetting.domain.FootballSportEvent;
+import com.sportsbetting.domain.Outcome;
+import com.sportsbetting.domain.OutcomeOdd;
+import com.sportsbetting.domain.Player;
+import com.sportsbetting.domain.Wager;
+import com.sportsbetting.exception.TerminateAppExcpetion;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import service.ISportsBettingService;
-import view.IView;
+import com.sportsbetting.service.ISportsBettingService;
+import com.sportsbetting.view.IView;
 
 /**
  *
