@@ -13,7 +13,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -23,9 +25,9 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Bet implements Serializable {
-    
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     public int getId() {
@@ -46,15 +48,16 @@ public class Bet implements Serializable {
         this.setBettype(type);
     }
 
-    @Column("description")
+    @Column(name = "description")
     private String description;
-     
-    @OneToOne
+
+    @OneToOne()
+    @JoinColumn(name = "Person_FK")
     private SportEvent event;
-    
+
     @OneToMany(fetch = FetchType.EAGER)
     private List<Outcome> winnerOutcomes;
-    
+
     @Enumerated(EnumType.STRING)
     private BetType type;
 

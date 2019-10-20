@@ -6,6 +6,7 @@
 package com.example.sportsbetting.service;
 
 
+import com.example.sportsbetting.domain.OutcomeOdd;
 import com.example.sportsbetting.domain.Player;
 import com.example.sportsbetting.domain.SportEvent;
 import com.example.sportsbetting.domain.Wager;
@@ -22,4 +23,5 @@ public interface ISportsBettingService {
     void saveWage(Wager wager);
     List<Wager> findAllWagers();
     void calculateResults();
+    void InsertOutcomeOdd(OutcomeOdd odd);
 }

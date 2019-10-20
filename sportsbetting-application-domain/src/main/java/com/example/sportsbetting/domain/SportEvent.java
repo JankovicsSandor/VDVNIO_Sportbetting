@@ -14,21 +14,17 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
  * @author Sanyi
  */
 @Entity
+@Inheritance
 public abstract class SportEvent implements Serializable {
-    
-    @Id
-    @GeneratedValue
-    private int Id;
 
     public int getId() {
         return Id;
@@ -46,19 +42,22 @@ public abstract class SportEvent implements Serializable {
         this.setResult(result);
     }
 
+    @Id
+    @GeneratedValue
+    private int Id;
+
     @Column(name = "title")
     private String title;
 
     @Column(name = "startDate")
     private LocalDateTime startDate;
-            
-    @Column(name = "endDate")
-    @Temporal(TemporalType.TIMESTAMP)
+
+    @Column(name = "endDate", columnDefinition = "TIME")
     private LocalDateTime endDate;
 
-    @ManyToOne
+    @OneToMany(targetEntity = Bet.class,fetch = FetchType.EAGER)
     private List<Bet> bets;
-    
+
     @OneToOne(fetch = FetchType.EAGER)
     private Result result;
 

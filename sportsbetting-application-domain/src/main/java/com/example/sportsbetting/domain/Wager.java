@@ -23,27 +23,26 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Wager {
-    
+
     @Id
     @GeneratedValue
     private int Id;
 
-    @Column( "amount")
+    @Column(name = "amount")
     private BigDecimal amount;
 
-    @Column( "timeStampCreated")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "timeStampCreated", columnDefinition = "DATE")
     private LocalDateTime timeStampCreated;
 
-    @Column("processed")
+    @Column(name = "processed")
     private boolean processed;
 
-    @Column("win")
+    @Column(name = "win")
     private boolean win;
-    
+
     @OneToOne()
     private OutcomeOdd odd;
-    
+
     @OneToOne()
     private Player player;
 
@@ -59,7 +58,7 @@ public class Wager {
         this.setPlayer(player);
         this.setCurrency(currency);
     }
-    
+
     public int getId() {
         return Id;
     }

@@ -6,11 +6,16 @@
 package com.example.sportsbetting.service;
 
 
-import com.example.sportsbetting.database.Database;
+import com.example.sportsbetting.dao.IOutComeOddDao;
+import com.example.sportsbetting.dao.IPlayerDao;
+import com.example.sportsbetting.dao.ISportEventDao;
+import com.example.sportsbetting.dao.IWagerDao;
+import com.example.sportsbetting.domain.OutcomeOdd;
 import com.example.sportsbetting.domain.Player;
 import com.example.sportsbetting.domain.SportEvent;
 import com.example.sportsbetting.domain.Wager;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -18,40 +23,53 @@ import java.util.List;
  */
 public class SportBettingSerivce implements ISportsBettingService {
 
-    private final Database database;
+    @Autowired
+    private ISportEventDao sportEventDao;
 
-    public SportBettingSerivce(Database database) {
-        this.database=database;
+    @Autowired
+    private IWagerDao wagerDao;
+    
+    @Autowired
+    private IPlayerDao playerDao;
+
+    @Autowired
+    private IOutComeOddDao outcomeOddDao;
+
+    public SportBettingSerivce() {
     }
 
     
     @Override
     public void savePlayer(Player player) {
-        this.database.setPlayer(player);
+        this.playerDao.AddPlayer(player);
     }
 
     @Override
     public Player findPlayer() {
-       return this.database.getPlayer();
+       return this.playerDao.GetActualPlayer();
     }
 
     @Override
     public List<SportEvent> findAllSportEvents() {
-        return this.database.getSportEvent();
+        return this.sportEventDao.GetAllSportEvent();
     }
 
     @Override
     public void saveWage(Wager wager) {
-        this.database.setWager(wager);
+         this.wagerDao.InsertWager(wager);
     }
 
     @Override
     public List<Wager> findAllWagers() {
-       return this.database.getWager();
+       return this.wagerDao.GetWager();
     }
 
     @Override
     public void calculateResults() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void InsertOutcomeOdd(OutcomeOdd odd) {
+       this.outcomeOddDao.InsertOutcomeOdd(odd);
     }
 }

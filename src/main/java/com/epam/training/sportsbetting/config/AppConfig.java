@@ -8,7 +8,14 @@ package com.epam.training.sportsbetting.config;
 import com.example.sportsbetting.service.SportBettingSerivce;
 import com.example.sportsbetting.view.View;
 import com.example.sportsbetting.app.App;
-import com.example.sportsbetting.database.Database;
+import com.example.sportsbetting.dao.IOutComeOddDao;
+import com.example.sportsbetting.dao.IPlayerDao;
+import com.example.sportsbetting.dao.ISportEventDao;
+import com.example.sportsbetting.dao.IWagerDao;
+import com.example.sportsbetting.dao.OutComeOddDao;
+import com.example.sportsbetting.dao.PlayerDao;
+import com.example.sportsbetting.dao.SportEventDao;
+import com.example.sportsbetting.dao.WagerDao;
 import com.example.sportsbetting.language.LanguageService;
 
 import java.util.Properties;
@@ -28,15 +35,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  *
  * @author Sanyi
  */
-
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.example.sportsbetting.repository")
 public class AppConfig {
 
-    private static String dbUrl = "jdbc:mysql://localhost/sportsbetting_sandor_jankovics?serverTimezone=Europe/Budapest";
-    private static String username = "root";
-    private static String password = "root";
+    private static final String dbUrl = "jdbc:mysql://127.0.0.1:3308/sportsbetting_sandor_jankovics?serverTimezone=Europe/Budapest";
+    private static final String username = "root";
+    private static final String password = "root";
 
     @Bean
     public DataSource dataSource() {
@@ -59,7 +65,7 @@ public class AppConfig {
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.show_sql", "true");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }
@@ -71,12 +77,12 @@ public class AppConfig {
 
     @Bean
     public App getApp() {
-        return new App(this.getService(), this.getView());
+        return new App();
     }
 
     @Bean
     public SportBettingSerivce getService() {
-        return new SportBettingSerivce(this.getDatabase());
+        return new SportBettingSerivce();
     }
 
     @Bean
@@ -85,8 +91,23 @@ public class AppConfig {
     }
 
     @Bean
-    public Database getDatabase() {
-        return new Database();
+    public IPlayerDao getPlayerDao() {
+        return new PlayerDao();
+    }
+
+    @Bean
+    public ISportEventDao getSportEventDao() {
+        return new SportEventDao();
+    }
+
+    @Bean
+    public IWagerDao getWagerDao() {
+        return new WagerDao();
+    }
+
+    @Bean
+    public IOutComeOddDao getOutcomeOddDao() {
+        return new OutComeOddDao();
     }
 
     @Bean

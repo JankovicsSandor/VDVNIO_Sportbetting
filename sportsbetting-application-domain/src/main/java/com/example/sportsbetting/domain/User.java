@@ -28,8 +28,8 @@ public class User extends Player implements Serializable {
     public User() {
     }
 
-    public User(String email, String password, String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency, User user) {
-        super(name, accountNumber, balance, birth, currency, user);
+    public User(String email, String password, String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency) {
+        super(name, accountNumber, balance, birth, currency);
         this.setEmail(email);
         this.setPassword(password);
     }

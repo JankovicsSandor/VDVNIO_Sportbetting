@@ -14,8 +14,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -28,17 +26,16 @@ public class Player implements Serializable {
     @GeneratedValue
     private int Id;
 
-    @Column("name")
+    @Column(name = "name")
     private String name;
 
-    @Column("accountNumber")
+    @Column(name = "accountNumber")
     private Integer accountNumber;
 
-    @Column("balance")
+    @Column(name = "balance")
     private BigDecimal balance;
 
-    @Column("birth")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "birth", columnDefinition = "DATE")
     private LocalDate birth;
 
     @Enumerated(EnumType.STRING)
@@ -47,13 +44,12 @@ public class Player implements Serializable {
     public Player() {
     }
 
-    public Player(String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency, User user) {
+    public Player(String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency) {
         this.setName(name);
         this.setAccountNumber(accountNumber);
         this.setBalance(balance);
         this.setBirth(birth);
         this.setCurrency(currency);
-        this.setUser(user);
     }
 
     public int getId() {
@@ -67,8 +63,6 @@ public class Player implements Serializable {
     public void setCurrency(Currency currency) {
         this.currency = currency;
     }
-
-    private User user;
 
     public String getName() {
         return name;
@@ -100,13 +94,5 @@ public class Player implements Serializable {
 
     public void setBirth(LocalDate birth) {
         this.birth = birth;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

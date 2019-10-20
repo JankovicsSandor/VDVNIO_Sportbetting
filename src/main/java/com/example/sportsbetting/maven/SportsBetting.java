@@ -72,61 +72,61 @@ public class SportsBetting {
             List<OutcomeOdd> outcomeOdd = new ArrayList<>();
             outcomeOdd.add(
                     new OutcomeOddBuilder()
-                            .value(new BigDecimal(2))
-                            .validFrom(validFromDate)
-                            .validUntil(validToDate)
-                            .build()
+                    .value(new BigDecimal(2))
+                    .validFrom(validFromDate)
+                    .validUntil(validToDate)
+                    .build()
             );
 
             List<OutcomeOdd> outcomeOdd2 = new ArrayList<>();
             outcomeOdd2.add(
                     new OutcomeOddBuilder()
-                            .value(new BigDecimal(3))
-                            .validFrom(validFromDate)
-                            .validUntil(validToDate)
-                            .build()
+                    .value(new BigDecimal(3))
+                    .validFrom(validFromDate)
+                    .validUntil(validToDate)
+                    .build()
             );
 
             List<OutcomeOdd> outcomeOdd3 = new ArrayList<>();
             outcomeOdd3.add(
                     new OutcomeOddBuilder()
-                            .value(new BigDecimal(2))
-                            .validFrom(validFromDate)
-                            .validUntil(validToDate)
-                            .build()
+                    .value(new BigDecimal(2))
+                    .validFrom(validFromDate)
+                    .validUntil(validToDate)
+                    .build()
             );
 
             List<OutcomeOdd> outcomeOdd4 = new ArrayList<>();
             outcomeOdd4.add(
                     new OutcomeOddBuilder()
-                            .value(new BigDecimal(3))
-                            .validFrom(validFromDate)
-                            .validUntil(validToDate)
-                            .build()
+                    .value(new BigDecimal(3))
+                    .validFrom(validFromDate)
+                    .validUntil(validToDate)
+                    .build()
             );
 
             List<Outcome> outcome = new ArrayList<>();
             outcome.add(
                     new OutcomeBuilder()
-                            .description("1")
-                            .outcomeOdds(outcomeOdd)
-                            .build()
+                    .description("1")
+                    .outcomeOdds(outcomeOdd)
+                    .build()
             );
 
             List<Outcome> outcome2 = new ArrayList<>();
             outcome2.add(
                     new OutcomeBuilder()
-                            .description("3")
-                            .outcomeOdds(outcomeOdd2)
-                            .build()
+                    .description("3")
+                    .outcomeOdds(outcomeOdd2)
+                    .build()
             );
 
             List<Outcome> outcome3 = new ArrayList<>();
             outcome3.add(
                     new OutcomeBuilder()
-                            .description("Arsenal")
-                            .outcomeOdds(outcomeOdd3)
-                            .build()
+                    .description("Arsenal")
+                    .outcomeOdds(outcomeOdd3)
+                    .build()
             );
 
             String pattern = LanguageService.getLocaleBundle().getString("playerScoreGoalMessage");
@@ -134,52 +134,71 @@ public class SportsBetting {
             List<Bet> bets = new ArrayList<>();
             bets.add(
                     new BetBuilder()
-                            .description(resultFormatter.format(new Object[]{"Oliver Giroud"}))
-                            .type(BetType.PLAYERS_SCORE)
-                            .winnerOutcomes(outcome)
-                            .build()
+                    .description(resultFormatter.format(new Object[]{"Oliver Giroud"}))
+                    .type(BetType.PLAYERS_SCORE)
+                    .winnerOutcomes(outcome)
+                    .build()
             );
 
             bets.add(
                     new BetBuilder()
-                            .description(LanguageService.getLocaleBundle().getString("numberOfScoredGoalsMessage"))
-                            .type(BetType.GOALS)
-                            .winnerOutcomes(outcome2)
-                            .build()
+                    .description(LanguageService.getLocaleBundle().getString("numberOfScoredGoalsMessage"))
+                    .type(BetType.GOALS)
+                    .winnerOutcomes(outcome2)
+                    .build()
             );
             bets.add(
                     new BetBuilder()
-                            .description(LanguageService.getLocaleBundle().getString("winnerBetMessage"))
-                            .type(BetType.WINNER)
-                            .winnerOutcomes(outcome3)
-                            .build()
+                    .description(LanguageService.getLocaleBundle().getString("winnerBetMessage"))
+                    .type(BetType.WINNER)
+                    .winnerOutcomes(outcome3)
+                    .build()
             );
 
             String fromDate = "2020-01-01 12:00:00";
 
             LocalDateTime dateTime = LocalDateTime.parse(fromDate, dateFormatter);
+            
 
             FootballSportEvent footballEvent = (FootballSportEvent) new SporteventBuilder().title("Arsenal vs Chelsea")
                     .startDate(dateTime)
+                    .endDate(validToDate)
                     .bets(bets)
                     .build(1);
 
-            em.persist(outcomeOdd);
-            em.persist(outcomeOdd2);
-            em.persist(outcomeOdd3);
-            em.persist(outcomeOdd4);
-            em.persist(outcome);
-            em.persist(outcome2);
-            em.persist(outcome3);
-            em.persist(bets);
+            SaveOutcomeOddToDatabase(em, outcomeOdd);
+            SaveOutcomeOddToDatabase(em, outcomeOdd2);
+            SaveOutcomeOddToDatabase(em, outcomeOdd3);
+            SaveOutcomeOddToDatabase(em, outcomeOdd4);
+            SaveOutcomeToDatabase(em, outcome);
+            SaveOutcomeToDatabase(em, outcome2);
+            SaveOutcomeToDatabase(em, outcome3);
+            SaveBetsToDatabase(em,bets);
             em.persist(footballEvent);
-            
+
             tr.commit();
-            System.out.println("Event Id: "+footballEvent.getId());
+            System.out.println("Event Id: " + footballEvent.getId());
             //this.database.setSportEvent(footballEvent);
             application.play();
         }
+    }
 
+    public static void SaveOutcomeOddToDatabase(EntityManager em, List<OutcomeOdd> listToInsert) {
+        for (Object object : listToInsert) {
+            em.persist(object);
+        }
+    }
+
+    public static void SaveOutcomeToDatabase(EntityManager em, List<Outcome> listToInsert) {
+        for (Object object : listToInsert) {
+            em.persist(object);
+        }
+    }
+
+    public static void SaveBetsToDatabase(EntityManager em, List<Bet> listToInsert) {
+        for (Object object : listToInsert) {
+            em.persist(object);
+        }
     }
 
 }
