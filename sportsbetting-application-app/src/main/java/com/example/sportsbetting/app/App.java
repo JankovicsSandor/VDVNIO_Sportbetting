@@ -19,9 +19,11 @@ import com.example.sportsbetting.domain.OutcomeOdd;
 import com.example.sportsbetting.domain.Player;
 import com.example.sportsbetting.domain.Wager;
 import com.example.sportsbetting.exception.TerminateAppExcpetion;
+import com.example.sportsbetting.language.LanguageService;
 import com.example.sportsbetting.service.ISportsBettingService;
 import com.example.sportsbetting.view.IView;
 import java.math.BigDecimal;
+import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -53,86 +55,87 @@ public class App {
         List<OutcomeOdd> outcomeOdd = new ArrayList<OutcomeOdd>();
         outcomeOdd.add(
                 new OutcomeOddBuilder()
-                .value(new BigDecimal(2))
-                .validFrom(validFromDate)
-                .validUntil(validToDate)
-                .build()
+                        .value(new BigDecimal(2))
+                        .validFrom(validFromDate)
+                        .validUntil(validToDate)
+                        .build()
         );
 
         List<OutcomeOdd> outcomeOdd2 = new ArrayList<OutcomeOdd>();
         outcomeOdd2.add(
                 new OutcomeOddBuilder()
-                .value(new BigDecimal(3))
-                .validFrom(validFromDate)
-                .validUntil(validToDate)
-                .build()
+                        .value(new BigDecimal(3))
+                        .validFrom(validFromDate)
+                        .validUntil(validToDate)
+                        .build()
         );
 
         List<OutcomeOdd> outcomeOdd3 = new ArrayList<OutcomeOdd>();
         outcomeOdd3.add(
                 new OutcomeOddBuilder()
-                .value(new BigDecimal(2))
-                .validFrom(validFromDate)
-                .validUntil(validToDate)
-                .build()
+                        .value(new BigDecimal(2))
+                        .validFrom(validFromDate)
+                        .validUntil(validToDate)
+                        .build()
         );
 
         List<OutcomeOdd> outcomeOdd4 = new ArrayList<OutcomeOdd>();
         outcomeOdd4.add(
                 new OutcomeOddBuilder()
-                .value(new BigDecimal(3))
-                .validFrom(validFromDate)
-                .validUntil(validToDate)
-                .build()
+                        .value(new BigDecimal(3))
+                        .validFrom(validFromDate)
+                        .validUntil(validToDate)
+                        .build()
         );
 
         List<Outcome> outcome = new ArrayList<Outcome>();
         outcome.add(
                 new OutcomeBuilder()
-                .description("1")
-                .outcomeOdds(outcomeOdd)
-                .build()
+                        .description("1")
+                        .outcomeOdds(outcomeOdd)
+                        .build()
         );
 
         List<Outcome> outcome2 = new ArrayList<Outcome>();
         outcome2.add(
                 new OutcomeBuilder()
-                .description("3")
-                .outcomeOdds(outcomeOdd2)
-                .build()
+                        .description("3")
+                        .outcomeOdds(outcomeOdd2)
+                        .build()
         );
 
         List<Outcome> outcome3 = new ArrayList<Outcome>();
         outcome3.add(
                 new OutcomeBuilder()
-                .description("Arsenal")
-                .outcomeOdds(outcomeOdd3)
-                .build()
+                        .description("Arsenal")
+                        .outcomeOdds(outcomeOdd3)
+                        .build()
         );
 
+        String pattern = LanguageService.getLocaleBundle().getString("playerScoreGoalMessage");
+        MessageFormat resultFormatter = new MessageFormat(pattern);
         List<Bet> bets = new ArrayList<Bet>();
         bets.add(
                 new BetBuilder()
-                .description("player Oliver Giroud score")
-                .type(BetType.PLAYERS_SCORE)
-                .winnerOutcomes(outcome)
-                .build()
+                        .description(resultFormatter.format(new Object[]{"Oliver Giroud"}))
+                        .type(BetType.PLAYERS_SCORE)
+                        .winnerOutcomes(outcome)
+                        .build()
         );
 
         bets.add(
                 new BetBuilder()
-                .description("number of scored goals")
-                .type(BetType.GOALS)
-                .winnerOutcomes(outcome2)
-                .build()
-        );
-
+                        .description(LanguageService.getLocaleBundle().getString("numberOfScoredGoalsMessage"))
+                        .type(BetType.GOALS)
+                        .winnerOutcomes(outcome2)
+                        .build()
+        );        
         bets.add(
                 new BetBuilder()
-                .description("winner")
-                .type(BetType.WINNER)
-                .winnerOutcomes(outcome3)
-                .build()
+                        .description(LanguageService.getLocaleBundle().getString("winnerBetMessage"))
+                        .type(BetType.WINNER)
+                        .winnerOutcomes(outcome3)
+                        .build()
         );
 
         String fromDate = "2020-01-01 12:00:00";
@@ -164,6 +167,7 @@ public class App {
         Player player = this.view.readPlayerData();
         this.sportsBettingService.savePlayer(player);
         this.view.printWelcomeMessage(player);
+        this.view.printBalance(player);
 
     }
 

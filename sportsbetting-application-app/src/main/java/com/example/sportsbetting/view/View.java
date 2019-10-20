@@ -28,6 +28,9 @@ public class View implements IView {
 
     @Autowired
     LanguageService service;
+    MessageFormat formatter;
+
+    String pattern;
 
     @Override
     public Player readPlayerData() {
@@ -50,16 +53,16 @@ public class View implements IView {
     
     @Override
     public void printWelcomeMessage(Player player) {
-        String pattern = LanguageService.getLocaleBundle().getString("welcomeMessage");
-        MessageFormat formatter = new MessageFormat(pattern);
+        pattern = LanguageService.getLocaleBundle().getString("welcomeMessage");
+        formatter = new MessageFormat(pattern);
 
         System.out.println(formatter.format(new Object[]{player.getName()}));
     }
 
     @Override
     public void printBalance(Player player) {
-        String pattern = LanguageService.getLocaleBundle().getString("balanceMessage");
-        MessageFormat formatter = new MessageFormat(pattern);
+        pattern = LanguageService.getLocaleBundle().getString("balanceMessage");
+        formatter = new MessageFormat(pattern);
 
         System.out.println(formatter.format(new Object[]{player.getBalance(), player.getCurrency()}));
     }
@@ -68,9 +71,9 @@ public class View implements IView {
     public void printOutcomeOdds(List<SportEvent> sportEventList) {
         System.out.println(LanguageService.getLocaleBundle().getString("betAsk"));
 
-        String pattern = LanguageService.getLocaleBundle().getString("betDescription");
-        MessageFormat formatter = new MessageFormat(pattern);
-
+        pattern = LanguageService.getLocaleBundle().getString("betDescription");
+        formatter = new MessageFormat(pattern);
+        
         int index = 0;
         for (SportEvent sportEvent : sportEventList) {
             for (Bet bet : sportEvent.getBets()) {
@@ -122,32 +125,38 @@ public class View implements IView {
     @Override
     public void printNotEnoughBalance(Player player) {
 
-        String pattern = LanguageService.getLocaleBundle().getString("notEnoughBalance");
-        MessageFormat formatter = new MessageFormat(pattern);
+        pattern = LanguageService.getLocaleBundle().getString("notEnoughBalance");
+        formatter = new MessageFormat(pattern);
         System.out.println(formatter.format(new Object[]{player.getBalance(), player.getCurrency()}));
     }
 
     @Override
     public void printResults(Player player, List<Wager> wagerList) {
-        String pattern = LanguageService.getLocaleBundle().getString("resultMesage");
-        MessageFormat formatter = new MessageFormat(pattern);
+        System.out.println(LanguageService.getLocaleBundle().getString("resultMessageLabel"));
+        pattern = LanguageService.getLocaleBundle().getString("resultMesage");
+        formatter = new MessageFormat(pattern);
 
         for (Wager wager : wagerList) {
-            System.out.println(formatter.format(new Object[]{wager.getOdd().getOutcome().getDescription(),
-                wager.getOdd().getOutcome().getBet().getEvent().getTitle(), wager.getOdd().getValue(), wager.getAmount(), wager.isWin()}));
+            System.out.println(formatter.format(new Object[]{
+                wager.getOdd().getOutcome().getBet().getDescription(),
+                wager.getOdd().getOutcome().getDescription(),
+                wager.getOdd().getOutcome().getBet().getEvent().getTitle(),
+                wager.getOdd().getValue(),
+                wager.getAmount(),
+                wager.isWin()}));
         }
 
-        String pattern2 = LanguageService.getLocaleBundle().getString("newBalanceMessage");
-        MessageFormat formatter2 = new MessageFormat(pattern2);
+        pattern = LanguageService.getLocaleBundle().getString("newBalanceMessage");
+        formatter = new MessageFormat(pattern);
 
-        System.out.println(formatter2.format(new Object[]{player.getBalance(), player.getCurrency()}));
+        System.out.println(formatter.format(new Object[]{player.getBalance(), player.getCurrency()}));
     }
 
     @Override
     public void printWageSaved(Wager wager) {
 
-        String pattern = LanguageService.getLocaleBundle().getString("betSaveMessage");
-        MessageFormat formatter = new MessageFormat(pattern);
+        pattern = LanguageService.getLocaleBundle().getString("betSaveMessage");
+        formatter = new MessageFormat(pattern);
 
         System.out.println(formatter.format(new Object[]{
             wager.getOdd().getOutcome().getBet().getDescription(),
