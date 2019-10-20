@@ -22,7 +22,9 @@ import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -131,7 +133,7 @@ public class SportsBetting {
 
             String pattern = LanguageService.getLocaleBundle().getString("playerScoreGoalMessage");
             MessageFormat resultFormatter = new MessageFormat(pattern);
-            List<Bet> bets = new ArrayList<>();
+            Set<Bet> bets = new HashSet<Bet>();
             bets.add(
                     new BetBuilder()
                     .description(resultFormatter.format(new Object[]{"Oliver Giroud"}))
@@ -158,7 +160,6 @@ public class SportsBetting {
             String fromDate = "2020-01-01 12:00:00";
 
             LocalDateTime dateTime = LocalDateTime.parse(fromDate, dateFormatter);
-            
 
             FootballSportEvent footballEvent = (FootballSportEvent) new SporteventBuilder().title("Arsenal vs Chelsea")
                     .startDate(dateTime)
@@ -173,7 +174,7 @@ public class SportsBetting {
             SaveOutcomeToDatabase(em, outcome);
             SaveOutcomeToDatabase(em, outcome2);
             SaveOutcomeToDatabase(em, outcome3);
-            SaveBetsToDatabase(em,bets);
+            SaveBetsToDatabase(em, bets);
             em.persist(footballEvent);
 
             tr.commit();
@@ -195,7 +196,7 @@ public class SportsBetting {
         }
     }
 
-    public static void SaveBetsToDatabase(EntityManager em, List<Bet> listToInsert) {
+    public static void SaveBetsToDatabase(EntityManager em, Set<Bet> listToInsert) {
         for (Object object : listToInsert) {
             em.persist(object);
         }

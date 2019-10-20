@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,10 +32,9 @@ public abstract class SportEvent implements Serializable {
     }
 
     public SportEvent() {
-        this.bets = new ArrayList<Bet>();
     }
 
-    public SportEvent(String title, LocalDateTime startDate, LocalDateTime endDate, List<Bet> bets, Result result) {
+    public SportEvent(String title, LocalDateTime startDate, LocalDateTime endDate, Set<Bet> bets, Result result) {
         this.setTitle(title);
         this.setStartDate(startDate);
         this.setEndDate(endDate);
@@ -55,8 +55,8 @@ public abstract class SportEvent implements Serializable {
     @Column(name = "endDate", columnDefinition = "TIME")
     private LocalDateTime endDate;
 
-    @OneToMany(targetEntity = Bet.class,fetch = FetchType.EAGER)
-    private List<Bet> bets;
+    @OneToMany(targetEntity = Bet.class, fetch = FetchType.EAGER)
+    private Set<Bet> bets;
 
     @OneToOne(fetch = FetchType.EAGER)
     private Result result;
@@ -85,11 +85,11 @@ public abstract class SportEvent implements Serializable {
         this.endDate = endDate;
     }
 
-    public List<Bet> getBets() {
+    public Set<Bet> getBets() {
         return bets;
     }
 
-    public void setBets(List<Bet> bet) {
+    public void setBets(Set<Bet> bet) {
         for (Bet bet1 : bet) {
             bet1.setEvent(this);
         }

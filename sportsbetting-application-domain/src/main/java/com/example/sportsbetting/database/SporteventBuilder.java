@@ -11,8 +11,8 @@ import com.example.sportsbetting.domain.Result;
 import com.example.sportsbetting.domain.SportEvent;
 import com.example.sportsbetting.domain.TennisSportEvent;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -24,11 +24,11 @@ public class SporteventBuilder {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
 
-    private List<Bet> bets;
+    private Set<Bet> bets;
     private Result result;
 
     public SporteventBuilder() {
-        this.bets=new ArrayList<Bet>();
+        this.bets = new HashSet<Bet>();
     }
 
     public SporteventBuilder title(String title) {
@@ -46,7 +46,7 @@ public class SporteventBuilder {
         return this;
     }
 
-    public SporteventBuilder bets(List<Bet> bets) {
+    public SporteventBuilder bets(Set<Bet> bets) {
         this.bets = bets;
         return this;
     }
