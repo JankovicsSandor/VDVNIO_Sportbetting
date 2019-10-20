@@ -5,14 +5,29 @@
  */
 package com.example.sportsbetting.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Sanyi
  */
-public class OutcomeOdd {
+
+@Entity
+public class OutcomeOdd implements Serializable {
+    
+    @Id
+    @GeneratedValue
+    private int Id;
+
+    public OutcomeOdd() {
+    }
 
     public OutcomeOdd(BigDecimal value, LocalDateTime validFrom, LocalDateTime validUntil, Outcome outcome) {
         this.setValue(value);
@@ -21,9 +36,16 @@ public class OutcomeOdd {
         this.setOutcome(outcome);
     }
 
+    @Column(name="value")
     private BigDecimal value;
+    
+    @Column(name="validFrom")
     private LocalDateTime validFrom;
+    
+    @Column(name="validUntil")
     private LocalDateTime validUntil;
+    
+    @OneToOne()
     private Outcome outcome;
 
     public Outcome getOutcome() {

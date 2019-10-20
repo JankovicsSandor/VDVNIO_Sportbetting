@@ -5,28 +5,16 @@
  */
 package com.example.sportsbetting.app;
 
-import com.example.sportsbetting.database.BetBuilder;
 import com.example.sportsbetting.database.Database;
-import com.example.sportsbetting.database.OutcomeBuilder;
-import com.example.sportsbetting.database.OutcomeOddBuilder;
-import com.example.sportsbetting.database.SporteventBuilder;
 import com.example.sportsbetting.database.WagerBuilder;
-import com.example.sportsbetting.domain.Bet;
-import com.example.sportsbetting.domain.BetType;
-import com.example.sportsbetting.domain.FootballSportEvent;
-import com.example.sportsbetting.domain.Outcome;
 import com.example.sportsbetting.domain.OutcomeOdd;
 import com.example.sportsbetting.domain.Player;
 import com.example.sportsbetting.domain.Wager;
 import com.example.sportsbetting.exception.TerminateAppExcpetion;
-import com.example.sportsbetting.language.LanguageService;
 import com.example.sportsbetting.service.ISportsBettingService;
 import com.example.sportsbetting.view.IView;
 import java.math.BigDecimal;
-import java.text.MessageFormat;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -46,108 +34,7 @@ public class App {
         database = new Database();
     }
 
-    public void play() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String validFrom = "2000-01-01 12:00:00";
-        LocalDateTime validFromDate = LocalDateTime.parse(validFrom, formatter);
-        String validTo = "2020-01-01 12:00:00";
-        LocalDateTime validToDate = LocalDateTime.parse(validTo, formatter);
-        List<OutcomeOdd> outcomeOdd = new ArrayList<OutcomeOdd>();
-        outcomeOdd.add(
-                new OutcomeOddBuilder()
-                        .value(new BigDecimal(2))
-                        .validFrom(validFromDate)
-                        .validUntil(validToDate)
-                        .build()
-        );
-
-        List<OutcomeOdd> outcomeOdd2 = new ArrayList<OutcomeOdd>();
-        outcomeOdd2.add(
-                new OutcomeOddBuilder()
-                        .value(new BigDecimal(3))
-                        .validFrom(validFromDate)
-                        .validUntil(validToDate)
-                        .build()
-        );
-
-        List<OutcomeOdd> outcomeOdd3 = new ArrayList<OutcomeOdd>();
-        outcomeOdd3.add(
-                new OutcomeOddBuilder()
-                        .value(new BigDecimal(2))
-                        .validFrom(validFromDate)
-                        .validUntil(validToDate)
-                        .build()
-        );
-
-        List<OutcomeOdd> outcomeOdd4 = new ArrayList<OutcomeOdd>();
-        outcomeOdd4.add(
-                new OutcomeOddBuilder()
-                        .value(new BigDecimal(3))
-                        .validFrom(validFromDate)
-                        .validUntil(validToDate)
-                        .build()
-        );
-
-        List<Outcome> outcome = new ArrayList<Outcome>();
-        outcome.add(
-                new OutcomeBuilder()
-                        .description("1")
-                        .outcomeOdds(outcomeOdd)
-                        .build()
-        );
-
-        List<Outcome> outcome2 = new ArrayList<Outcome>();
-        outcome2.add(
-                new OutcomeBuilder()
-                        .description("3")
-                        .outcomeOdds(outcomeOdd2)
-                        .build()
-        );
-
-        List<Outcome> outcome3 = new ArrayList<Outcome>();
-        outcome3.add(
-                new OutcomeBuilder()
-                        .description("Arsenal")
-                        .outcomeOdds(outcomeOdd3)
-                        .build()
-        );
-
-        String pattern = LanguageService.getLocaleBundle().getString("playerScoreGoalMessage");
-        MessageFormat resultFormatter = new MessageFormat(pattern);
-        List<Bet> bets = new ArrayList<Bet>();
-        bets.add(
-                new BetBuilder()
-                        .description(resultFormatter.format(new Object[]{"Oliver Giroud"}))
-                        .type(BetType.PLAYERS_SCORE)
-                        .winnerOutcomes(outcome)
-                        .build()
-        );
-
-        bets.add(
-                new BetBuilder()
-                        .description(LanguageService.getLocaleBundle().getString("numberOfScoredGoalsMessage"))
-                        .type(BetType.GOALS)
-                        .winnerOutcomes(outcome2)
-                        .build()
-        );        
-        bets.add(
-                new BetBuilder()
-                        .description(LanguageService.getLocaleBundle().getString("winnerBetMessage"))
-                        .type(BetType.WINNER)
-                        .winnerOutcomes(outcome3)
-                        .build()
-        );
-
-        String fromDate = "2020-01-01 12:00:00";
-
-        LocalDateTime dateTime = LocalDateTime.parse(fromDate, formatter);
-
-        FootballSportEvent footballEvent = (FootballSportEvent) new SporteventBuilder().title("Arsenal vs Chelsea")
-                .startDate(dateTime)
-                .bets(bets)
-                .build(1);
-
-        this.database.setSportEvent(footballEvent);
+    public void play() {     
         this.createPlayer();
 
         Boolean doAgain = true;

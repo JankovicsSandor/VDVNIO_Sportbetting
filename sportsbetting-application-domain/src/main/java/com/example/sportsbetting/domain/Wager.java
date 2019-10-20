@@ -7,29 +7,61 @@ package com.example.sportsbetting.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Sanyi
  */
+@Entity
 public class Wager {
+    
+    @Id
+    @GeneratedValue
+    private int Id;
 
+    @Column( "amount")
     private BigDecimal amount;
+
+    @Column( "timeStampCreated")
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime timeStampCreated;
+
+    @Column("processed")
     private boolean processed;
+
+    @Column("win")
     private boolean win;
+    
+    @OneToOne()
     private OutcomeOdd odd;
+    
+    @OneToOne()
     private Player player;
+
+    @Enumerated(EnumType.STRING)
     private Currency currency;
 
     public Wager(BigDecimal amount, LocalDateTime timeStampCreated, boolean processed, boolean win, OutcomeOdd odd, Player player, Currency currency) {
-       this.setAmount(amount);
-       this.setTimeStampCreated(timeStampCreated);
-       this.setProcessed(processed);
-       this.setWin(win);
-       this.setOdd(odd);
-       this.setPlayer(player);
-       this.setCurrency(currency);
+        this.setAmount(amount);
+        this.setTimeStampCreated(timeStampCreated);
+        this.setProcessed(processed);
+        this.setWin(win);
+        this.setOdd(odd);
+        this.setPlayer(player);
+        this.setCurrency(currency);
+    }
+    
+    public int getId() {
+        return Id;
     }
 
     public Player getPlayer() {

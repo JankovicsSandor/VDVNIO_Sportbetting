@@ -5,22 +5,33 @@
  */
 package com.example.sportsbetting.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 /**
  *
  * @author Sanyi
  */
-public class User extends Player {
 
+@Entity
+public class User extends Player implements Serializable {
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
+
+    public User() {
+    }
 
     public User(String email, String password, String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency, User user) {
         super(name, accountNumber, balance, birth, currency, user);
-       this.setEmail(email);
-       this.setPassword(password);
+        this.setEmail(email);
+        this.setPassword(password);
     }
 
     public String getEmail() {
