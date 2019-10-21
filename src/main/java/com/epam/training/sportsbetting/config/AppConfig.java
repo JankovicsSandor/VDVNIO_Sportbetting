@@ -42,7 +42,7 @@ public class AppConfig {
 
     private static final String dbUrl = "jdbc:mysql://127.0.0.1:3306/sportsbetting_sandor_jankovics?serverTimezone=Europe/Budapest";
     private static final String username = "root";
-    private static final String password = "Genius1?";
+    private static final String password = "root";
 
     @Bean
     public DataSource dataSource() {
