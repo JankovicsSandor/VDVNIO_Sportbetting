@@ -24,19 +24,19 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Sanyi
  */
 public class App {
-
+    
     @Autowired
     private ISportsBettingService sportsBettingService;
-
+    
     @Autowired
     private IView view;
-
+    
     public App() {
     }
-
+    
     public void play() {
         this.createPlayer();
-
+        
         Boolean doAgain = true;
         while (doAgain) {
             try {
@@ -47,27 +47,26 @@ public class App {
         }
         this.calculateResults();
         this.printResults();
-
+        
     }
-
+    
     private void createPlayer() {
         Player player = this.view.readPlayerData();
         this.sportsBettingService.savePlayer(player);
         this.view.printWelcomeMessage(player);
         this.view.printBalance(player);
-
+        
     }
-
-    private void doBetting() throws TerminateAppExcpetion {
-
-        List<SportEvent> eventList=this.sportsBettingService.findAllSportEvents();
+    
+    private void doBetting() throws TerminateAppExcpetion { 
+        List<SportEvent> eventList = this.sportsBettingService.findAllSportEvents();
         this.view.printOutcomeOdds(eventList);
         OutcomeOdd odd = this.view.selectOutcomeOdd(eventList);
-        this.sportsBettingService.InsertOutcomeOdd(odd);
+        // this.sportsBettingService.InsertOutcomeOdd(odd);
         BigDecimal amount = this.view.readWagerAmount();
         Player actualPlayer = this.sportsBettingService.findPlayer();
-        if (actualPlayer.getBalance().compareTo(amount) != -1) {
-            actualPlayer.setBalance((actualPlayer.getBalance().subtract(amount)));
+        if (actualPlayer.getBalance().compareTo(amount) != -1) {           
+            this.sportsBettingService.updatePlayerBalance(actualPlayer.getBalance().subtract(amount));
             Random r = new Random();
             Wager wager = new WagerBuilder()
                     .amount(amount)
@@ -83,18 +82,11 @@ public class App {
             this.view.printNotEnoughBalance(actualPlayer);
         }
     }
-
+    
     private void calculateResults() {
-        List<Wager> wagerList = this.sportsBettingService.findAllWagers();
-        Player player = this.sportsBettingService.findPlayer();
-        for (Wager wager : wagerList) {
-            if (wager.isWin()) {
-                BigDecimal val = wager.getOdd().getValue().multiply(wager.getAmount());
-                player.setBalance((player.getBalance().add(val)));
-            }
-        }
+       this.sportsBettingService.calculateResults();
     }
-
+    
     private void printResults() {
         Player player = this.sportsBettingService.findPlayer();
         this.view.printResults(player, this.sportsBettingService.findAllWagers());

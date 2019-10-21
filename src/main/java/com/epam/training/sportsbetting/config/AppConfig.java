@@ -40,9 +40,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = "com.example.sportsbetting.repository")
 public class AppConfig {
 
-    private static final String dbUrl = "jdbc:mysql://127.0.0.1:3308/sportsbetting_sandor_jankovics?serverTimezone=Europe/Budapest";
+    private static final String dbUrl = "jdbc:mysql://127.0.0.1:3306/sportsbetting_sandor_jankovics?serverTimezone=Europe/Budapest";
     private static final String username = "root";
-    private static final String password = "root";
+    private static final String password = "Genius1?";
 
     @Bean
     public DataSource dataSource() {
@@ -66,6 +66,7 @@ public class AppConfig {
         Properties properties = new Properties();
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }

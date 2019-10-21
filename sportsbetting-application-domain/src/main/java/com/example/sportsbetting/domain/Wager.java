@@ -14,8 +14,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -48,6 +46,9 @@ public class Wager {
 
     @Enumerated(EnumType.STRING)
     private Currency currency;
+
+    public Wager() {
+    }
 
     public Wager(BigDecimal amount, LocalDateTime timeStampCreated, boolean processed, boolean win, OutcomeOdd odd, Player player, Currency currency) {
         this.setAmount(amount);

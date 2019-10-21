@@ -47,9 +47,7 @@ public class View implements IView {
         player.setCurrency(Currency.valueOf(scanner.nextLine()));
 
         return player;
-    }
-
-    ;
+    };
     
     @Override
     public void printWelcomeMessage(Player player) {

@@ -22,12 +22,7 @@ public class SportEventDao extends GenericDao implements ISportEventDao {
         List<SportEvent> list = entityManager
                 .createQuery("SELECT se FROM SportEvent se", SportEvent.class)
                 .getResultList();
-
-        for (SportEvent sportEvent : list) {
-            sportEvent.getBets().size();
-            sportEvent.getResult();
-
-        }
+        
         return list;
     }
 
