@@ -14,52 +14,18 @@ import java.time.LocalDate;
  *
  * @author Sanyi
  */
-public class PlayerBuilder {
+public class PlayerBuilder extends UserBuilder {
 
-    private String name;
-    private Integer accountNumber;
-    private BigDecimal balance;
-    private LocalDate birth;
-    private Currency currency;
+     private String email;
+    private String password;
 
-    public PlayerBuilder accountNumber(Integer accountNumber) {
-        this.accountNumber = accountNumber;
+    public PlayerBuilder password(String password) {
+        this.password = password;
         return this;
     }
 
-    public PlayerBuilder balance(BigDecimal balance) {
-        this.balance = balance;
+    public PlayerBuilder email(String email) {
+        this.email = email;
         return this;
     }
-
-    public PlayerBuilder birth(LocalDate birth) {
-        this.birth = birth;
-        return this;
-    }
-
-    public PlayerBuilder currency(Currency currency) {
-        this.currency = currency;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getAccountNumber() {
-        return accountNumber;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public LocalDate getBirth() {
-        return birth;
-    }
-
-    public Currency getCurrency() {
-        return currency;
-    }
-
 }

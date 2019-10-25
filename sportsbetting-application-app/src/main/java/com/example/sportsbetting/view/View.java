@@ -29,13 +29,18 @@ public class View implements IView {
     @Autowired
     LanguageService service;
     MessageFormat formatter;
+    Scanner scanner;
 
     String pattern;
 
+    public View() {
+        scanner = new Scanner(System.in);
+    }
+    
     @Override
     public Player readPlayerData() {
         Player player = new Player();
-        Scanner scanner = new Scanner(System.in);
+        
 
         System.out.println(LanguageService.getLocaleBundle().getString("nameAsk"));
         player.setName(scanner.nextLine());
@@ -90,7 +95,6 @@ public class View implements IView {
 
     @Override
     public OutcomeOdd selectOutcomeOdd(List<SportEvent> sportEventList) throws TerminateAppExcpetion {
-        Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();
         if ("q".equals(line)) {
             throw new TerminateAppExcpetion();
@@ -116,7 +120,6 @@ public class View implements IView {
     @Override
     public BigDecimal readWagerAmount() {
         System.out.println(LanguageService.getLocaleBundle().getString("betAmountAsk"));
-        Scanner scanner = new Scanner(System.in);
         return new BigDecimal(scanner.nextLine());
     }
 

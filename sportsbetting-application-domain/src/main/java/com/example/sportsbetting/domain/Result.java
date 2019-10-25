@@ -6,6 +6,7 @@
 package com.example.sportsbetting.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,18 +17,18 @@ import javax.persistence.ManyToOne;
  *
  * @author Sanyi
  */
-
 @Entity
 public class Result implements Serializable {
-    
+
     @Id
     @GeneratedValue
     private int Id;
-    
-   @ManyToOne(targetEntity = Outcome.class)
+
+    @ManyToOne(targetEntity = Outcome.class)
     private List<Outcome> winnerOutcomes;
 
     public Result() {
+        winnerOutcomes=new ArrayList<Outcome>();
     }
 
     public int getId() {
@@ -35,7 +36,7 @@ public class Result implements Serializable {
     }
 
     public Result(List<Outcome> winnerOutcomes) {
-       this.setWinnerOutcomes(winnerOutcomes);
+        this.setWinnerOutcomes(winnerOutcomes);
     }
 
     public List<Outcome> getWinnerOutcomes() {
