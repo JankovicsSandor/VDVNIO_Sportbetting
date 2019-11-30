@@ -18,5 +18,5 @@ public interface ISportEventDao {
     @Transactional
     public void save(SportEvent event);
 
-    public List<SportEvent> GetAllSportEvent();
+    public List<SportEvent> GetAllSportEvents();
 }

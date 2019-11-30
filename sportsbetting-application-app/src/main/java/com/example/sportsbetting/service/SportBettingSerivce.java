@@ -50,7 +50,7 @@ public class SportBettingSerivce implements ISportsBettingService {
 
     @Override
     public List<SportEvent> findAllSportEvents() {
-        return this.sportEventDao.GetAllSportEvent();
+        return this.sportEventDao.GetAllSportEvents();
     }
 
     @Override
@@ -60,12 +60,12 @@ public class SportBettingSerivce implements ISportsBettingService {
 
     @Override
     public List<Wager> findAllWagers() {
-        return this.wagerDao.GetWager();
+        return this.wagerDao.GetWagers();
     }
 
     @Override
     public void calculateResults() {
-        List<Wager> wagerList = this.wagerDao.GetWager();
+        List<Wager> wagerList = this.wagerDao.GetWagers();
         Player player = this.playerDao.GetActualPlayer();
         for (Wager wager : wagerList) {
             if (wager.isWin()) {

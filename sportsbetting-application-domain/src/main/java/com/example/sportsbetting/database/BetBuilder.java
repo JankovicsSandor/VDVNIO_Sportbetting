@@ -38,8 +38,8 @@ public class BetBuilder {
         return this;
     }
 
-    public BetBuilder winnerOutcomes(List<Outcome> outcome) {
-        this.winnerOutcomes = outcome;
+    public BetBuilder winnerOutcomes(List<Outcome> outcomes) {
+        this.winnerOutcomes = outcomes;
         return this;
     }
 

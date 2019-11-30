@@ -10,44 +10,90 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author Sanyi
  */
-
 @Entity
-public class User extends Player implements Serializable {
+public class User implements Serializable {
 
-    @Column(name = "email")
-    private String email;
+    @Id
+    @GeneratedValue
+    private int Id;
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "accountNumber")
+    private Integer accountNumber;
+
+    @Column(name = "balance")
+    private BigDecimal balance;
+
+    @Column(name = "birth", columnDefinition = "DATE")
+    private LocalDate birth;
+
+    @Enumerated(EnumType.STRING)
+    private Currency currency;
 
     public User() {
     }
 
-    public User(String email, String password, String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency) {
-        super(name, accountNumber, balance, birth, currency);
-        this.setEmail(email);
-        this.setPassword(password);
+    public User(String name, Integer accountNumber, BigDecimal balance, LocalDate birth, Currency currency) {
+        this.setName(name);
+        this.setAccountNumber(accountNumber);
+        this.setBalance(balance);
+        this.setBirth(birth);
+        this.setCurrency(currency);
     }
 
-    public String getEmail() {
-        return email;
+    public int getId() {
+        return Id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public Currency getCurrency() {
+        return currency;
     }
 
-    public String getPassword() {
-        return password;
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(Integer accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public LocalDate getBirth() {
+        return birth;
+    }
+
+    public void setBirth(LocalDate birth) {
+        this.birth = birth;
     }
 
 }

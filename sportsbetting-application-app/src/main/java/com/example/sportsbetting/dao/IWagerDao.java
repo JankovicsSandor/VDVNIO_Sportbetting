@@ -18,5 +18,5 @@ public interface IWagerDao {
     @Transactional
     public void InsertWager(Wager wager);
     
-    public List<Wager> GetWager();
+    public List<Wager> GetWagers();
 }

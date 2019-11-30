@@ -18,7 +18,7 @@ public class WagerDao extends GenericDao implements IWagerDao {
         entityManager.persist(wager);
     }
 
-    public List<Wager> GetWager() {
+    public List<Wager> GetWagers() {
         List<Wager> list = entityManager.createQuery("SELECT wager FROM Wager wager", Wager.class).getResultList();
 
         return list;

@@ -18,7 +18,7 @@ public class SportEventDao extends GenericDao implements ISportEventDao {
         entityManager.persist(event);
     }
 
-    public List<SportEvent> GetAllSportEvent() {
+    public List<SportEvent> GetAllSportEvents() {
         List<SportEvent> list = entityManager
                 .createQuery("SELECT se FROM SportEvent se", SportEvent.class)
                 .getResultList();
